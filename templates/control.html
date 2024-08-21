@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Flask-SocketIO Test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" integrity="sha512-aMGMvNYu8Ue4G+fHa359jcPb1u+ytAF+P2SCb+PxrjCdO3n3ZTxJ30zuH39rimUggmTwmh2u7wvQsDTHESnmfQ==" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            var socket = io();
+            $('form#vdc').submit(function(event) {
+                socket.emit('control', {type: "vdc"});
+                return false;
+            });
+            $('form#cont').submit(function(event) {
+                socket.emit('control', {type: "cont"});
+                return false;
+            });
+        });
+    </script>
+    <style>
+        .mybutton {
+          width: 500px;
+          height: 200px;
+          font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+<form id="vdc" method="POST" action='#'>
+  <input class="mybutton" type="submit" value="VDC">
+</form>
+<form id="cont" method="POST" action='#'>
+  <input class="mybutton" type="submit" value="CONT">
+</form>
+</body>
+</html>
